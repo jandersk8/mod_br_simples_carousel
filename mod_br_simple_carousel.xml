@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" client="site" method="upgrade">
+    <name>BR Simple Carousel</name>
+    <author>Janderson Moreira</author>
+    <creationDate>February 2026</creationDate>
+    <copyright>Copyright (c) 2026 Janderson Moreira.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <authorEmail>jandersonmm@gmail.com</authorEmail>
+    <authorUrl>https://github.com/jandersk8</authorUrl>
+    <version>1.0.0</version>
+    
+    <description><![CDATA[
+        <h3>BR Simple Carousel</h3>
+        <p>A modern, lightweight image showcase carousel. Just select a folder and it works!</p>
+        <p><strong>Instructions:</strong></p>
+        <ul>
+            <li><strong>Folder:</strong> Select the folder inside your 'images' directory.</li>
+            <li><strong>Images to Display:</strong> Choose how many images appear at once on Desktop.</li>
+            <li><strong>Dimensions:</strong> Set max-width and image height.</li>
+        </ul>
+    ]]></description>
+
+    <updateservers>
+        <server type="extension" priority="1" name="BR Simple Carousel Updates">https://raw.githubusercontent.com/jandersk8/mod_br_simple_carousel/main/update.xml</server>
+    </updateservers>
+
+    <files>
+        <filename module="mod_br_simple_carousel">mod_br_simple_carousel.php</filename>
+        <filename>helper.php</filename>
+        <filename>update.xml</filename>
+        <folder>tmpl</folder>
+        <folder>language</folder>
+        <file>LICENSE.txt</file>
+    </files>
+
+    <config>
+        <fields name="params">
+            <fieldset name="basic" label="Settings">
+                <field 
+                    name="folder_path" 
+                    type="folder" 
+                    directory="images"
+                    default="images/headers" 
+                    label="Select Folder" 
+                    description="Select the folder inside 'images' where your photos are." 
+                    required="true"
+                />
+
+                <field 
+                    name="items_desktop" 
+                    type="list" 
+                    default="4" 
+                    label="Images to Display (Desktop)"
+                    description="Number of images visible at the same time on large screens. Mobile will always show 1.">
+                    <option value="1">1 Image</option>
+                    <option value="2">2 Images</option>
+                    <option value="3">3 Images</option>
+                    <option value="4">4 Images</option>
+                    <option value="5">5 Images</option>
+                    <option value="6">6 Images</option>
+                </field>
+
+                <field 
+                    name="slide_duration" 
+                    type="number" 
+                    default="5" 
+                    label="Slide Duration (Seconds)" 
+                    description="Time in seconds for each slide movement. Set to 0 to disable auto-play." 
+                    min="0"
+                    max="60"
+                    step="1"
+                    required="true"
+                />
+
+                <field 
+                    name="carousel_max_width" 
+                    type="text" 
+                    default="1200px" 
+                    label="Max Width" 
+                    description="Maximum width of the carousel container (e.g., 1200px, 100%)." 
+                    required="true"
+                />
+
+                <field 
+                    name="carousel_height" 
+                    type="text" 
+                    default="200px" 
+                    label="Image Height" 
+                    description="Fixed height for the images (e.g., 200px, 300px)." 
+                    required="true"
+                />
+
+                <field name="fit_mode" type="list" default="cover" label="Image Fit Mode">
+                    <option value="cover">Cover (Fill - may crop)</option>
+                    <option value="contain">Contain (Whole image - no crop)</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>
